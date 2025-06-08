@@ -10,9 +10,9 @@ export const metadata: Metadata = {
   description:
     "Join Mamun on extraordinary adventures across the seven seas. Discover hidden gems, meet incredible people, and create memories that last a lifetime.",
   keywords: "travel, blog, adventure, sailing, nomad, travel photography",
-  authors: [{ name: "Mamun The Nomadic" }],
+  authors: [{ name: "Mamun The Nomad" }],
   openGraph: {
-    title: "Mamun The Nomadic - Travel Blog",
+    title: "Mamun The Nomad - Travel Blog",
     description: "Join Mamun on extraordinary adventures across the seven seas.",
     type: "website",
     images: ["/images/hero-sailing.jpg"],
