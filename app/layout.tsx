@@ -17,6 +17,7 @@ export const metadata: Metadata = {
     type: "website",
     images: ["/images/hero-sailing.jpg"],
   },
+    generator: 'v0.dev'
 }
 
 export default function RootLayout({

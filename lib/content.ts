@@ -764,7 +764,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: "camping-magic",
     title: "Nights Under the Stars",
-    date: "April 15, 2020",
+    date: "April 15, 2022",
     image: "/images/photo_2025-06-08_14-41-08.jpg",
     excerpt: "The magic of camping in the wilderness with illuminated tents...",
     content:
@@ -773,7 +773,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: "indigenous-wisdom",
     title: "Learning from Indigenous Communities",
-    date: "April 10, 2018",
+    date: "April 10, 2021",
     image: "/images/photo_2025-06-08_14-41-02.jpg",
     excerpt: "Connecting with the rich heritage of Bangladesh's tribal communities...",
     content:
@@ -782,7 +782,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: "fishing-traditions",
     title: "Traditional Fishing Heritage",
-    date: "April 5, 2017",
+    date: "April 5, 2018",
     image: "/images/photo_2025-06-08_14-41-20.jpg",
     excerpt: "Following fishermen as they carry nets across fields to the sea...",
     content:
@@ -791,7 +791,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: "urban-stories",
     title: "Stories from the Streets",
-    date: "March 30, 2016",
+    date: "March 30, 2017",
     image: "/images/photo_2025-06-08_14-41-17.jpg",
     excerpt: "Documenting the untold stories of urban life in Bangladesh...",
     content:
@@ -800,7 +800,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: "golden-hour-magic",
     title: "Chasing Golden Hour",
-    date: "March 25, 2015",
+    date: "March 25, 2016",
     image: "/images/photo_2025-06-08_14-41-14.jpg",
     excerpt: "The magical transformation of ordinary scenes during golden hour...",
     content:
@@ -809,7 +809,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: "fresh-catch-stories",
     title: "Stories of the Fresh Catch",
-    date: "March 20, 2013",
+    date: "March 20, 2014",
     image: "/images/photo_2025-06-08_14-41-40.jpg",
     excerpt: "Following fishermen as they bring their daily catch to shore...",
     content:
@@ -818,7 +818,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: "cultural-ceremonies",
     title: "Sacred Fire Ceremonies",
-    date: "March 15, 2012",
+    date: "March 15, 2013",
     image: "/images/photo_2025-06-08_17-44-11.jpg",
     excerpt: "Witnessing ancient fire ceremonies that connect communities to their spiritual roots...",
     content:
@@ -827,7 +827,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: "mountain-lake-adventures",
     title: "Mountain Lake Discoveries",
-    date: "March 10, 2020",
+    date: "March 10, 2012",
     image: "/images/photo_2025-06-08_17-44-03.jpg",
     excerpt: "Exploring the stunning mountain lakes of Bangladesh's hill districts...",
     content:
@@ -836,7 +836,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: "historic-architecture",
     title: "Architectural Marvels",
-    date: "March 5, 2023",
+    date: "March 5, 2011",
     image: "/images/photo_2025-06-08_17-44-27.jpg",
     excerpt: "Discovering the magnificent historic palaces and their perfect reflections...",
     content:
