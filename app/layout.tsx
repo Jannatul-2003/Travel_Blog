@@ -53,7 +53,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Mamun The Nomad" }],
   openGraph: {
     title: "Mamun The Nomad - Travel Blog",
-    description: "Join Mamun on extraordinary adventures across the seven seas.",
+    description: "Join Mamun on extraordinary adventures to create memories.",
     type: "website",
     images: ["/images/photo_2025-06-08_17-44-18.jpg"],
   },

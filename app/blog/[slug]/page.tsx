@@ -89,9 +89,9 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                       <div className="bg-gray-50 rounded-lg overflow-hidden hover:shadow-md transition-shadow">
                         <div className="relative h-48">
                           <ClientImage
-                            src={post.image || "/placeholder.svg"}
+                            src={relatedPost.image || "/placeholder.svg"}
                             fallbackSrc="/placeholder.svg?height=400&width=800"
-                            alt={post.title}
+                            alt={relatedPost.title}
                             fill
                             className="object-cover"
                             priority
