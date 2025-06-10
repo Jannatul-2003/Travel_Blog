@@ -39,12 +39,12 @@ export const destinations: TravelDestination[] = [
   {
     id: "river-journey",
     title: "River Steamer Journey",
-    location: "Padma River, Bangladesh",
+    location: "Lohalia River, Patuakhali.",
     image: "/images/photo_2025-06-08_14-42-09.jpg",
-    description: "Epic river journeys on traditional steamers through Bangladesh's waterways",
+    description: "A majestic passenger steamer navigating the rivers of Bangladesh",
     fullDescription:
-      "River travel is the lifeline of Bangladesh. This massive passenger steamer carries hundreds of people across the mighty rivers, connecting remote villages to urban centers. The journey offers breathtaking views of lush green landscapes and a glimpse into the daily life of river communities.",
-  },
+      "The rivers of Bangladesh are lifelines for millions, and this majestic passenger steamer is a perfect example of the country's rich river transport heritage. The steamer, with its towering smokestacks and bustling decks, represents the spirit of adventure and exploration that defines river journeys in this water-rich nation.",
+    },
   {
     id: "river-terminal",
     title: "Bustling River Terminal",
@@ -57,21 +57,20 @@ export const destinations: TravelDestination[] = [
   {
     id: "sailing-heritage",
     title: "Sailing Heritage",
-    location: "Chittagong, Bangladesh",
+    location: "Teknaf, Bangladesh",
     image: "/images/photo_2025-06-08_14-42-06.jpg",
-    description: "Traditional sailing boats with their iconic red sails and colorful flags",
+    description: "Traditional sailing boats with red sails and colorful flags",
     fullDescription:
-      "The traditional sailing boats of Bangladesh are works of art in motion. With their distinctive red sails and colorful prayer flags, these vessels have been navigating the Bay of Bengal for generations, carrying both cargo and the dreams of seafaring communities.",
+      "The traditional sailing boats of Teknaf are a testament to the region's rich maritime heritage. With their iconic red sails and colorful flags, these boats not only serve as fishing vessels but also as symbols of the local culture. This image captures the beauty and craftsmanship that define Bangladesh's coastal communities.",
   },
-  {
+  { 
     id: "pristine-beach",
     title: "Pristine Beach Solitude",
-    location: "Saint Martin's Island, Bangladesh",
+    location: "Teknaf, Bangladesh",
     image: "/images/photo_2025-06-08_14-42-04.jpg",
-    description: "Finding peace and solitude on Bangladesh's most beautiful beaches",
+    description: "A solitary fishing boat on the endless stretch of golden sand",
     fullDescription:
-      "Saint Martin's Island offers some of the most pristine beaches in South Asia. This solitary fishing boat on the endless stretch of golden sand represents the perfect harmony between human activity and natural beauty that defines Bangladesh's coastal regions.",
-  },
+      "Teknaf's pristine beaches offer a perfect escape from the crowded tourist spots. This image captures a solitary fishing boat resting on the golden sands, surrounded by the vastness of the Bay of Bengal. The tranquility of this scene invites contemplation and appreciation for the untouched beauty of Bangladesh's coastline.",},
   {
     id: "living-root-bridges",
     title: "Living Root Bridges",
@@ -84,12 +83,11 @@ export const destinations: TravelDestination[] = [
   {
     id: "mountain-lake-serenity",
     title: "Mountain Lake Serenity",
-    location: "Chittagong Hill Tracts",
+    location: "Umium Barapani lake, Meghalaya.",
     image: "/images/photo_2025-06-08_14-41-58.jpg",
-    description: "Finding peace in the tranquil mountain lakes",
+    description: "Tranquil moments by the serene Umium Barapani Lake in Meghalaya",
     fullDescription:
-      "The Chittagong Hill Tracts offer some of the most serene landscapes in Bangladesh. This mountain lake, surrounded by rolling hills and dotted with colorful boats, provided the perfect escape from the bustling city life.",
-  },
+      "The serene beauty of Umium Barapani Lake in Meghalaya offers a perfect escape from the hustle and bustle of city life. The calm waters surrounded by lush green hills create a peaceful atmosphere that invites reflection and relaxation. This image captures the essence of tranquility that can be found in the heart of nature.",},
   {
     id: "fishermen-life",
     title: "Life of River Fishermen",
@@ -102,23 +100,21 @@ export const destinations: TravelDestination[] = [
   {
     id: "colorful-boats-lake",
     title: "Colorful Boats at Lake",
-    location: "Rangamati, Bangladesh",
+    location: "Phewa lake, Nepal.",
     image: "/images/photo_2025-06-08_14-41-57.jpg",
     description: "Vibrant boats lined up along peaceful lake shores",
     fullDescription:
-      "The lakes of Rangamati are dotted with these beautifully painted boats that serve both as transportation and livelihood for the local communities. The peaceful setting under the shade of ancient trees creates a perfect harmony between human activity and nature.",
-  },
+      "The colorful boats of Phewa Lake in Nepal create a stunning visual display against the backdrop of the serene waters. Each boat, with its unique design and vibrant colors, tells a story of local craftsmanship and the deep connection between the people and their environment. This image captures the essence of tranquility and beauty that defines this popular lakeside destination.",},
 
   // Second batch - Adventure and culture
   {
     id: "paragliding-adventure",
     title: "Paragliding Adventures",
-    location: "Hill Tracts, Bangladesh",
+    location: "Kalimpong, WB.",
     image: "/images/photo_2025-06-08_14-41-09.jpg",
     description: "Soaring through the skies and experiencing the thrill of paragliding",
     fullDescription:
-      "The hills of Bangladesh offer incredible opportunities for paragliding. This exhilarating experience of soaring through the sky with the wind beneath your wings provides a unique perspective of the beautiful landscape below. The teamwork and preparation required make every flight a memorable adventure.",
-  },
+      "Paragliding in Kalimpong offers breathtaking views of the Himalayan foothills and valleys below. The thrill of soaring through the skies, feeling the wind rush past, and taking in the stunning landscapes is an experience like no other. This image captures the essence of adventure travel in Bangladesh's neighboring regions.",},
   {
     id: "camping-under-stars",
     title: "Camping Under the Stars",
@@ -194,12 +190,11 @@ export const destinations: TravelDestination[] = [
   {
     id: "flooded-forests",
     title: "Monsoon Forests",
-    location: "Sundarbans, Bangladesh",
+    location: "Ratargul swamp forest,Sylhet.",
     image: "/images/photo_2025-06-08_14-41-04.jpg",
-    description: "Exploring the mystical flooded forests during monsoon season",
+    description: "Monsoon season transforms Ratargul swamp forests into a mystical wonderland",
     fullDescription:
-      "During monsoon season, the forests of Bangladesh transform into mystical waterlands where trees stand like sentinels in the flood waters. This ethereal landscape creates a unique ecosystem where land and water merge, offering a glimpse into the incredible adaptability of nature in this river-rich country.",
-  },
+      "The monsoon season transforms the forests of Ratargul into a mystical wonderland. This image captures the serene beauty of flooded trees reflected in still waters, creating a dreamlike atmosphere. The lush greenery and calm waters provide a perfect backdrop for exploring the unique ecosystem of these swamp forests.",},
 
   // Third batch - Previous new images
   {
@@ -277,11 +272,11 @@ export const destinations: TravelDestination[] = [
   {
     id: "ship-chains",
     title: "Port Worker",
-    location: "Chittagong Port, Bangladesh",
+    location: "Sadar Ghat, Dhaka",
     image: "/images/photo_2025-06-08_14-41-16.jpg",
     description: "The hard work of port laborers handling massive ship chains",
     fullDescription:
-      "The ports of Bangladesh are powered by the incredible strength and dedication of workers who handle massive equipment like these ship chains. This image captures the industrial side of Bangladesh's economy and the human effort that keeps the country's maritime trade flowing.",
+      "The bustling port of Sadar Ghat in Dhaka is a hive of activity, where laborers work tirelessly to load and unload goods. This image captures the strength and dedication of port workers as they handle massive chains used to secure ships, showcasing the backbone of Bangladesh's maritime trade.",
   },
   {
     id: "cattle-silhouette",
@@ -315,7 +310,7 @@ export const destinations: TravelDestination[] = [
   {
     id: "island-fishing-boat",
     title: "Island Fishing Expedition",
-    location: "Bay of Bengal",
+    location: "Kaptai Lake, Rangamati.",
     image: "/images/photo_2025-06-08_14-41-34.jpg",
     description: "Traditional fishing boat with bamboo framework near a small island",
     fullDescription:
@@ -369,7 +364,7 @@ export const destinations: TravelDestination[] = [
   {
     id: "women-by-sea",
     title: "Contemplation by the Sea",
-    location: "Cox's Bazar Beach",
+    location: "Rea Sea, Jeddah.",
     image: "/images/photo_2025-06-08_14-41-28.jpg",
     description: "Two women in traditional dress sitting peacefully by the ocean",
     fullDescription:
@@ -388,20 +383,20 @@ export const destinations: TravelDestination[] = [
   {
     id: "lakeside-boat-parking",
     title: "Lakeside Boat Parking",
-    location: "Rangamati, Bangladesh",
+    location: "Phewa lake,  Nepal.",
     image: "/images/photo_2025-06-08_14-41-54.jpg",
     description: "Colorful boats neatly arranged along the peaceful lakeside",
     fullDescription:
-      "Under the shade of ancient trees, these beautifully painted boats rest along the shores of Rangamati's pristine lakes. The orderly arrangement of blue and red boats creates a stunning visual pattern, while the mountains in the background add to the serene atmosphere of this hill district paradise.",
+      "This serene image captures the beauty of Phewa Lake in Nepal, where colorful boats are parked along the shore. The calm water reflects the vibrant colors of the boats, creating a picturesque scene that invites visitors to explore the tranquil surroundings. The arrangement of boats showcases the harmony between human activity and nature in this popular lakeside destination.",    
   },
   {
     id: "grandfather-grandchild",
     title: "Generations of Love",
-    location: "Rural Bangladesh",
+    location: "Thimphu, Bhutan.",
     image: "/images/photo_2025-06-08_14-41-49.jpg",
     description: "Tender moment between grandfather and grandchild",
     fullDescription:
-      "This heartwarming image captures the beautiful bond between generations. The grandfather's weathered hands and gentle smile tell stories of a lifetime, while the young child represents hope and continuity. These moments of intergenerational love are the foundation of Bangladesh's strong family traditions.",
+      "This touching image captures the deep bond between a grandfather and his grandchild. The grandfather's gentle embrace and the child's innocent smile represent the timeless love that transcends generations. This intimate moment showcases the importance of family in Bhutanese society.",
   },
   {
     id: "child-playing-beach",
@@ -415,11 +410,11 @@ export const destinations: TravelDestination[] = [
   {
     id: "boat-line-formation",
     title: "Boat Line Formation",
-    location: "Phewa Lake, Bangladesh",
+    location: "Phewa Lake, Nepal",
     image: "/images/photo_2025-06-08_14-41-51.jpg",
     description: "Perfect line of colorful boats creating a stunning water formation",
     fullDescription:
-      "This artistic arrangement of boats in perfect formation creates a mesmerizing pattern on the calm water. The variety of colors - blue, yellow, green, and red - reflects the vibrant spirit of Bangladesh's boat culture. The willow branches framing the scene add a natural border to this aquatic masterpiece.",
+      "This mesmerizing image captures a perfect line of colorful boats on Phewa Lake in Nepal. The boats, arranged in a straight formation, create a stunning visual effect against the calm water. The vibrant colors and reflections add to the beauty of this serene lakeside scene, showcasing the harmony between human activity and nature.",
   },
   {
     id: "father-son-beach-walk",
@@ -451,12 +446,11 @@ export const destinations: TravelDestination[] = [
   {
     id: "lone-fisherman-mountains",
     title: "Lone Fisherman",
-    location: "Kaptai Lake, Bangladesh",
+    location: "Naf River, Teknaf, Bangladesh",
     image: "/images/photo_2025-06-08_14-41-45.jpg",
-    description: "Solitary fisherman in traditional boat with mountain backdrop",
+    description: "Lone fisherman in a traditional boat on the Naf River with Teknaf mountains",
     fullDescription:
-      "This peaceful scene shows a lone fisherman in his traditional wooden boat on the calm waters of Kaptai Lake. The misty mountains in the background create a serene atmosphere, while the fisherman's quiet concentration represents the meditative nature of traditional fishing practices in Bangladesh's hill districts.",
-  },
+      "This serene image captures a lone fisherman in his traditional boat on the Naf River, with the lush green mountains of Teknaf in the background. The simplicity of the scene, with its muted colors and calm waters, evokes a sense of peace and solitude that is often found in rural fishing communities. The fisherman represents the enduring connection between people and nature in this remote corner of Bangladesh.",},
   {
     id: "fishing-fleet-sunset",
     title: "Fishing Fleet at Sunset",
@@ -470,11 +464,11 @@ export const destinations: TravelDestination[] = [
   {
     id: "children-technology",
     title: "Digital Generation",
-    location: "Urban Bangladesh",
+    location: "Badal dada, Nepal.",
     image: "/images/photo_2025-06-08_14-42-25.jpg",
-    description: "Children embracing technology in modern Bangladesh",
+    description: "Children sharing a tablet in a rural setting, embracing modern technology",
     fullDescription:
-      "This touching scene captures the new generation of Bangladesh as they engage with modern technology. Two children sharing a tablet represents the digital transformation happening across the country, where traditional life meets the modern world. Their focused attention shows how technology is becoming an integral part of childhood, even in the most traditional settings.",
+      "In this rural setting, children gather around a tablet, representing the intersection of tradition and modernity. Their curiosity and excitement about technology highlight the changing landscape of education and communication in remote areas. This image captures the hope and potential of the next generation as they embrace new tools while remaining connected to their cultural roots.",
   },
   {
     id: "rice-field-worker",
@@ -515,11 +509,11 @@ export const destinations: TravelDestination[] = [
   {
     id: "traditional-rickshaws",
     title: "Traditional Rickshaws",
-    location: "Old Dhaka, Bangladesh",
+    location: "Pokhara, Nepal.",
     image: "/images/photo_2025-06-08_14-42-15.jpg",
-    description: "Colorful rickshaws waiting for passengers on city streets",
+    description: "Colorful rickshaws lined up in a vibrant urban scene",
     fullDescription:
-      "The iconic rickshaws of Bangladesh are more than just transportation - they're mobile works of art. These traditional three-wheeled vehicles, with their colorful decorations and protective covers, represent the ingenuity and artistic spirit of Bangladeshi culture. Each rickshaw is uniquely decorated, making them moving galleries that bring color and character to the bustling city streets.",
+      "This vibrant scene from Pokhara, Nepal, showcases the traditional rickshaws that are a common sight in South Asian cities. The colorful decorations and the skilled rickshaw pullers represent a unique mode of transportation that combines culture, art, and daily life. These rickshaws not only provide mobility but also contribute to the lively atmosphere of urban streets.",
   },
   // Seventh batch - Final additions
   {
@@ -543,20 +537,20 @@ export const destinations: TravelDestination[] = [
   {
     id: "jungle-boat-tour",
     title: "Jungle Waterway Adventure",
-    location: "Sundarbans, Bangladesh",
+    location: "Debota Khum, Bandarban, Bangladesh",
     image: "/images/photo_2025-06-08_16-41-15.jpg",
     description: "Eco-tourism boat navigating through lush jungle waterways",
     fullDescription:
-      "This eco-tourism adventure takes visitors deep into the heart of Bangladesh's jungle waterways. The red boat, equipped with safety gear, carries tourists through narrow channels surrounded by dense tropical vegetation, offering an intimate experience with the country's incredible biodiversity and natural beauty.",
+      "This eco-tourism boat tour through the dense jungles of Bandarban offers a unique perspective on Bangladesh's natural beauty. The narrow waterways surrounded by lush greenery create a serene atmosphere, allowing travelers to connect with nature while supporting sustainable tourism practices that benefit local communities.",
   },
   {
     id: "waterfall-dam",
     title: "Cascading Waterfall",
-    location: "Hill Districts, Bangladesh",
+    location: "Resiew Water Falls, Cherapunji, India",
     image: "/images/photo_2025-06-08_16-41-09.jpg",
-    description: "Powerful waterfall cascading over concrete spillway structure",
+    description: "Powerful waterfall cascading over concrete spillway in Cherapunji",
     fullDescription:
-      "This impressive waterfall demonstrates the power of water as it cascades over a concrete spillway structure. The force and volume of water create a spectacular display, while the engineering structure shows how humans work with natural water flow for irrigation and flood control in Bangladesh's hilly regions.",
+      "This dramatic image captures the power of nature as water cascades over a concrete spillway at Resiew Water Falls in Cherapunji, India. The waterfall's force creates a mesmerizing spectacle, while the surrounding lush greenery highlights the natural beauty of this region known for its heavy rainfall and stunning landscapes.",
   },
   {
     id: "mountain-caravan",
@@ -643,11 +637,11 @@ export const destinations: TravelDestination[] = [
   {
     id: "white-pier-waterfront",
     title: "Elegant Waterfront Pier",
-    location: "Coastal Bangladesh",
+    location: "Rangamati, Bangladesh",
     image: "/images/photo_2025-06-08_17-44-24.jpg",
     description: "Beautiful white pier structure extending into calm blue waters",
     fullDescription:
-      "This elegant white pier structure creates a stunning contrast against the deep blue waters. The architectural design combines functionality with beauty, serving as both a practical waterfront facility and a scenic spot for visitors to enjoy the tranquil coastal environment.",
+    "This elegant white pier extends gracefully into the calm blue waters of Rangamati, creating a stunning focal point against the backdrop of lush green hills. The pier serves as a gateway for tourists and locals alike, offering breathtaking views and a perfect spot for relaxation and contemplation in this picturesque hill district.",
   },
   {
     id: "historic-palace-reflection",
@@ -670,20 +664,20 @@ export const destinations: TravelDestination[] = [
   {
     id: "traditional-fire-ceremony",
     title: "Traditional Fire Ceremony",
-    location: "Cultural Site, Bangladesh",
+    location: "Talbahari, Pokhara, Nepal.",
     image: "/images/photo_2025-06-08_17-44-11.jpg",
     description: "Sacred fire ceremony with traditional performers in red and white",
     fullDescription:
-      "This powerful cultural ceremony showcases the rich spiritual traditions of Bangladesh. The performers in traditional red and white costumes hold flaming torches, creating a mesmerizing display that connects the present with ancient rituals. The gathered crowd represents the community's continued reverence for these sacred traditions.",
+    "This vibrant scene captures a traditional fire ceremony in Talbahari, where performers dressed in red and white garments create a mesmerizing display of cultural rituals. The sacred fire symbolizes purification and community spirit, while the colorful attire adds to the festive atmosphere. This image represents the rich cultural heritage of the region, where ancient traditions continue to thrive.",
   },
   {
     id: "fishing-fleet-operations",
     title: "Fishing Fleet Operations",
-    location: "Coastal Waters, Bangladesh",
+    location: "Jadukata River, Sunamganj.",
     image: "/images/photo_2025-06-08_17-45-06.jpg",
     description: "Multiple fishing boats working together with nets and equipment",
     fullDescription:
-      "This scene captures the coordinated effort of a fishing fleet as they work together in the coastal waters. The multiple boats with their nets and equipment represent the collaborative nature of fishing communities, where teamwork and shared knowledge are essential for successful catches.",
+    "This dynamic scene captures the essence of Bangladesh's fishing industry, where multiple boats work together to maximize their catch. The fishermen's teamwork is evident as they maneuver their nets and equipment, showcasing the skills and cooperation that define traditional fishing practices. The river setting highlights the importance of water bodies in sustaining livelihoods and communities.",
   },
   {
     id: "riverside-observer",
@@ -697,11 +691,11 @@ export const destinations: TravelDestination[] = [
   {
     id: "mountain-lake-tourism",
     title: "Mountain Lake Tourism",
-    location: "Hill Districts, Bangladesh",
+    location: "Umium Barapani Lake, Meghalaya.",
     image: "/images/photo_2025-06-08_17-44-03.jpg",
     description: "Tourist boats and facilities at a scenic mountain lake",
     fullDescription:
-      "This vibrant mountain lake scene showcases the growing eco-tourism industry in Bangladesh's hill districts. The colorful boats, tourist facilities, and dramatic mountain backdrop create a perfect setting for adventure and relaxation, representing the country's diverse landscape beyond its famous rivers and plains.",
+    "This picturesque scene captures the beauty of Umium Barapani Lake, a popular tourist destination in Meghalaya. The colorful boats and well-maintained facilities reflect the growing eco-tourism industry in the region, where visitors can enjoy the serene waters surrounded by lush mountains. This image represents the balance between tourism and nature conservation in Bangladesh's hill districts.",
   },
   // Ninth batch - Latest additions
   {
