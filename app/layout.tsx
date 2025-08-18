@@ -13,6 +13,7 @@ export const viewport: Viewport = {
 // ✅ Metadata (SEO, OpenGraph, etc.)
 export const metadata: Metadata = {
   title: "Mamun The Nomad - Travel Blog",
+  metadataBase: new URL("https://travel-blog-eta-pearl.vercel.app"),
   description:
     "Join Mamun on extraordinary adventures to discover hidden gems, meet incredible people, and create memories that last a lifetime.",
   keywords: "travel, blog, adventure, sailing, nomad, travel photography",
