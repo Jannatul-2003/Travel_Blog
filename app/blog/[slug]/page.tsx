@@ -1,8 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Calendar } from "lucide-react";
-import { blogPosts } from "@/lib/content";
+import { getBlogPostById, getAllBlogPosts } from "@/lib/content-fetcher"
 import { notFound } from "next/navigation";
 import ClientImage from "@/components/ClientImage";
 
@@ -12,12 +11,14 @@ interface BlogPostPageProps {
   };
 }
 
-export default function BlogPostPage({ params }: BlogPostPageProps) {
-  const post = blogPosts.find((p) => p.id === params.slug);
+export default async function BlogPostPage({ params }: BlogPostPageProps) {
+  const post = await getBlogPostById(params.slug)
 
   if (!post) {
     notFound();
   }
+ const allPosts = await getAllBlogPosts()
+  const relatedPosts = allPosts.filter((p) => p.id !== post.id).slice(0, 2)
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -81,10 +82,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
                 More Adventures
               </h3>
               <div className="grid md:grid-cols-2 gap-6">
-                {blogPosts
-                  .filter((p) => p.id !== post.id)
-                  .slice(0, 2)
-                  .map((relatedPost) => (
+                  {relatedPosts.map((relatedPost) => (
                     <Link key={relatedPost.id} href={`/blog/${relatedPost.id}`}>
                       <div className="bg-gray-50 rounded-lg overflow-hidden hover:shadow-md transition-shadow">
                         <div className="relative h-48">
