@@ -1,4 +1,3 @@
-
 "use client";
 
 import type React from "react";
@@ -94,19 +93,25 @@ const generateId = (title: string): string => {
 };
 
 // Custom hook for form validation
-const useFormValidation = (formData: FormData, hasImage: boolean, editingItem: FormData | null) => {
+const useFormValidation = (
+  formData: FormData,
+  hasImage: boolean,
+  editingItem: FormData | null
+) => {
   return useMemo(() => {
     const hasValidImage = hasImage || !!editingItem;
     const hasTitle = !!formData.title;
-    
-    const isDestinationValid = formData.type === "destination" 
-      ? !!formData.location && !!formData.description
-      : true;
-    
-    const isBlogValid = formData.type === "blog"
-      ? !!formData.date && !!formData.excerpt && !!formData.content
-      : true;
-    
+
+    const isDestinationValid =
+      formData.type === "destination"
+        ? !!formData.location && !!formData.description
+        : true;
+
+    const isBlogValid =
+      formData.type === "blog"
+        ? !!formData.date && !!formData.excerpt && !!formData.content
+        : true;
+
     return hasValidImage && hasTitle && isDestinationValid && isBlogValid;
   }, [formData, hasImage, editingItem]);
 };
@@ -142,7 +147,8 @@ export default function AdminContent() {
     } catch (error) {
       toast({
         title: "Error",
-        description: error instanceof Error ? error.message : "Could not load content.",
+        description:
+          error instanceof Error ? error.message : "Could not load content.",
         variant: "destructive",
       });
     } finally {
@@ -173,17 +179,20 @@ export default function AdminContent() {
   }, [authLogout, router]);
 
   // Image handling
-  const handleImageChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
+  const handleImageChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const file = e.target.files?.[0];
+      if (!file) return;
 
-    setSelectedImage(file);
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      setImagePreview(e.target?.result as string);
-    };
-    reader.readAsDataURL(file);
-  }, []);
+      setSelectedImage(file);
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setImagePreview(e.target?.result as string);
+      };
+      reader.readAsDataURL(file);
+    },
+    []
+  );
 
   const removeImage = useCallback(() => {
     setSelectedImage(null);
@@ -191,179 +200,207 @@ export default function AdminContent() {
   }, []);
 
   // Form handlers
-  const handleTitleChange = useCallback((title: string) => {
-    setFormData((prev) => ({
-      ...prev,
-      title,
-      id: editingItem ? prev.id : generateId(title),
-    }));
-  }, [editingItem]);
+  const handleTitleChange = useCallback(
+    (title: string) => {
+      setFormData((prev) => ({
+        ...prev,
+        title,
+        id: editingItem ? prev.id : generateId(title),
+      }));
+    },
+    [editingItem]
+  );
 
-  const updateFormField = useCallback(<K extends keyof FormData>(
-    field: K,
-    value: FormData[K]
-  ) => {
-    setFormData((prev) => ({ ...prev, [field]: value }));
-  }, []);
+  const updateFormField = useCallback(
+    <K extends keyof FormData>(field: K, value: FormData[K]) => {
+      setFormData((prev) => ({ ...prev, [field]: value }));
+    },
+    []
+  );
 
   // Image upload utility
   const uploadImage = useCallback(async (file: File): Promise<string> => {
     const formData = new FormData();
     formData.append("file", file);
-    
+
     const response = await fetch("/api/upload-image", {
       method: "POST",
       body: formData,
     });
-    
+
     if (!response.ok) throw new Error("Image upload failed");
-    
+
     const result = await response.json();
     return result.publicUrl;
   }, []);
 
   // Form submission
-  const handleSubmit = useCallback(async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!isFormValid || isSubmitting) return;
+  const handleSubmit = useCallback(
+    async (e: React.FormEvent) => {
+      e.preventDefault();
+      if (!isFormValid || isSubmitting) return;
 
-    setIsSubmitting(true);
+      setIsSubmitting(true);
 
-    try {
-      let imageUrl = editingItem?.image || "";
+      try {
+        let imageUrl = editingItem?.image || "";
 
-      if (selectedImage) {
-        toast({
-          title: "Uploading image...",
-          description: "Please wait.",
+        if (selectedImage) {
+          toast({
+            title: "Uploading image...",
+            description: "Please wait.",
+          });
+          imageUrl = await uploadImage(selectedImage);
+        }
+
+        if (!imageUrl) {
+          throw new Error("An image is required.");
+        }
+
+        const finalFullDescription =
+          formData.type === "destination" && !formData.fullDescription
+            ? formData.description
+            : formData.fullDescription;
+
+        const contentData = {
+          ...formData,
+          fullDescription: finalFullDescription,
+          image: imageUrl,
+        };
+
+        const apiEndpoint = editingItem
+          ? `/api/content/${editingItem.id}`
+          : "/api/content";
+        const apiMethod = editingItem ? "PUT" : "POST";
+
+        const response = await fetch(apiEndpoint, {
+          method: apiMethod,
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(contentData),
         });
-        imageUrl = await uploadImage(selectedImage);
+
+        if (!response.ok) {
+          const error = await response.json();
+          throw new Error(error.error || "Failed to save content");
+        }
+
+        const savedData = await response.json();
+
+        toast({
+          title: "Success!",
+          description: `Content "${formData.title}" has been ${
+            editingItem ? "updated" : "saved"
+          }.`,
+        });
+
+        // Update local state for instant feedback
+        const updateStateFunction =
+          formData.type === "destination" ? setDestinations : setBlogPosts;
+
+        if (editingItem) {
+          updateStateFunction((prev: any) =>
+            prev.map((item: any) =>
+              item.id === savedData.data.id ? savedData.data : item
+            )
+          );
+        } else {
+          updateStateFunction((prev: any) => [savedData.data, ...prev]);
+        }
+
+        resetForm();
+      } catch (error) {
+        toast({
+          title: "Error",
+          description:
+            error instanceof Error
+              ? error.message
+              : "An unknown error occurred.",
+          variant: "destructive",
+        });
+      } finally {
+        setIsSubmitting(false);
       }
-
-      if (!imageUrl) {
-        throw new Error("An image is required.");
-      }
-
-      const finalFullDescription = formData.type === "destination" && !formData.fullDescription
-        ? formData.description
-        : formData.fullDescription;
-
-      const contentData = {
-        ...formData,
-        fullDescription: finalFullDescription,
-        image: imageUrl,
-      };
-
-      const apiEndpoint = editingItem ? `/api/content/${editingItem.id}` : "/api/content";
-      const apiMethod = editingItem ? "PUT" : "POST";
-
-      const response = await fetch(apiEndpoint, {
-        method: apiMethod,
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(contentData),
-      });
-
-      if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.error || "Failed to save content");
-      }
-
-      const savedData = await response.json();
-
-      toast({
-        title: "Success!",
-        description: `Content "${formData.title}" has been ${editingItem ? "updated" : "saved"}.`,
-      });
-
-      // Update local state for instant feedback
-      const updateStateFunction = formData.type === "destination" ? setDestinations : setBlogPosts;
-      
-      if (editingItem) {
-        updateStateFunction((prev: any) =>
-          prev.map((item: any) => (item.id === savedData.data.id ? savedData.data : item))
-        );
-      } else {
-        updateStateFunction((prev: any) => [savedData.data, ...prev]);
-      }
-
-      resetForm();
-    } catch (error) {
-      toast({
-        title: "Error",
-        description: error instanceof Error ? error.message : "An unknown error occurred.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  }, [formData, selectedImage, editingItem, isFormValid, isSubmitting, uploadImage]);
+    },
+    [
+      formData,
+      selectedImage,
+      editingItem,
+      isFormValid,
+      isSubmitting,
+      uploadImage,
+    ]
+  );
 
   // Delete handler
-  const handleDelete = useCallback(async (id: string, type: "destination" | "blog") => {
-    try {
-      const response = await fetch(`/api/content/${id}?type=${type}`, {
-        method: "DELETE",
-      });
+  const handleDelete = useCallback(
+    async (id: string, type: "destination" | "blog") => {
+      try {
+        const response = await fetch(`/api/content/${id}?type=${type}`, {
+          method: "DELETE",
+        });
 
-      if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.error || "Failed to delete item.");
+        if (!response.ok) {
+          const error = await response.json();
+          throw new Error(error.error || "Failed to delete item.");
+        }
+
+        toast({
+          title: "Success!",
+          description: "The item has been deleted.",
+        });
+
+        // Update local state for instant feedback
+        if (type === "destination") {
+          setDestinations((prev) => prev.filter((d) => d.id !== id));
+        } else {
+          setBlogPosts((prev) => prev.filter((p) => p.id !== id));
+        }
+      } catch (error) {
+        toast({
+          title: "Error",
+          description:
+            error instanceof Error ? error.message : "Could not delete item.",
+          variant: "destructive",
+        });
       }
-
-      toast({
-        title: "Success!",
-        description: "The item has been deleted.",
-      });
-
-      // Update local state for instant feedback
-      if (type === "destination") {
-        setDestinations((prev) => prev.filter((d) => d.id !== id));
-      } else {
-        setBlogPosts((prev) => prev.filter((p) => p.id !== id));
-      }
-    } catch (error) {
-      toast({
-        title: "Error",
-        description: error instanceof Error ? error.message : "Could not delete item.",
-        variant: "destructive",
-      });
-    }
-  }, []);
+    },
+    []
+  );
 
   // Edit handler
-  const handleEdit = useCallback((
-    item: TravelDestination | BlogPost,
-    type: "destination" | "blog"
-  ) => {
-    const baseFormData = {
-      id: item.id,
-      title: item.title,
-      type,
-      image: item.image || "",
-      location: "",
-      description: "",
-      fullDescription: "",
-      date: "",
-      excerpt: "",
-      content: "",
-    };
+  const handleEdit = useCallback(
+    (item: TravelDestination | BlogPost, type: "destination" | "blog") => {
+      const baseFormData = {
+        id: item.id,
+        title: item.title,
+        type,
+        image: item.image || "",
+        location: "",
+        description: "",
+        fullDescription: "",
+        date: "",
+        excerpt: "",
+        content: "",
+      };
 
-    if (type === "destination" && "location" in item) {
-      baseFormData.location = item.location || "";
-      baseFormData.description = item.description || "";
-      baseFormData.fullDescription = item.fullDescription || "";
-    } else if (type === "blog" && "date" in item) {
-      baseFormData.date = item.date || "";
-      baseFormData.excerpt = item.excerpt || "";
-      baseFormData.content = item.content || "";
-    }
+      if (type === "destination" && "location" in item) {
+        baseFormData.location = item.location || "";
+        baseFormData.description = item.description || "";
+        baseFormData.fullDescription = item.fullDescription || "";
+      } else if (type === "blog" && "date" in item) {
+        baseFormData.date = item.date || "";
+        baseFormData.excerpt = item.excerpt || "";
+        baseFormData.content = item.content || "";
+      }
 
-    setFormData(baseFormData);
-    setImagePreview(item.image || "");
-    setSelectedImage(null);
-    setEditingItem(baseFormData);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, []);
+      setFormData(baseFormData);
+      setImagePreview(item.image || "");
+      setSelectedImage(null);
+      setEditingItem(baseFormData);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    },
+    []
+  );
 
   // Reset form
   const resetForm = useCallback(() => {
@@ -383,25 +420,37 @@ export default function AdminContent() {
     <div className="min-h-screen bg-gray-50">
       {/* Navigation */}
       <nav className="bg-white shadow-sm border-b">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <Link href="/" className="text-2xl font-bold text-emerald-600">
+        <div className="container mx-auto px-4 py-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          {/* Left side - Title */}
+          <Link
+            href="/"
+            className="text-lg md:text-2xl font-bold text-emerald-600"
+          >
             Admin Panel - Mamun The Nomad
           </Link>
 
-          <div className="flex items-center gap-4">
+          {/* Right side controls */}
+          <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
             {displayName && (
-              <span className="text-sm text-gray-600">Welcome, {displayName}</span>
+              <span className="text-sm text-gray-600 text-center sm:text-left">
+                Welcome, {displayName}
+              </span>
             )}
-            <Link href="/">
-              <Button variant="outline" className="flex items-center gap-2 bg-transparent">
+
+            <Link href="/" className="w-full sm:w-auto">
+              <Button
+                variant="outline"
+                className="flex items-center justify-center gap-2 w-full sm:w-auto bg-transparent"
+              >
                 <ArrowLeft className="w-4 h-4" />
                 Back to Website
               </Button>
             </Link>
+
             <Button
               variant="outline"
               onClick={handleLogout}
-              className="flex items-center gap-2 bg-transparent"
+              className="flex items-center justify-center gap-2 w-full sm:w-auto bg-transparent"
             >
               <LogOut className="w-4 h-4" />
               Logout
@@ -415,17 +464,25 @@ export default function AdminContent() {
           {/* Form Card */}
           <Card>
             <CardHeader>
-              <div className="flex justify-between items-center">
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
                 <CardTitle className="flex items-center gap-2">
-                  {editingItem ? <Pencil className="w-5 h-5" /> : <Plus className="w-5 h-5" />}
-                  {editingItem ? `Edit "${editingItem.title}"` : "Add New Content"}
+                  {editingItem ? (
+                    <Pencil className="w-5 h-5 text-emerald-600" />
+                  ) : (
+                    <Plus className="w-5 h-5 text-emerald-600" />
+                  )}
+                  <span className="font-medium text-gray-800">
+                    {editingItem
+                      ? `Edit ${editingItem.title}`
+                      : "Add New Content"}
+                  </span>
                 </CardTitle>
                 {editingItem && (
                   <Button
-                    variant="ghost"
+                    variant="outline"
                     size="sm"
                     onClick={resetForm}
-                    className="flex items-center gap-2"
+                    className="flex items-center gap-2 text-red-600 border-red-200 hover:bg-red-50 hover:text-red-700 transition-colors"
                   >
                     <XCircle className="w-4 h-4" /> Cancel Edit
                   </Button>
@@ -440,20 +497,65 @@ export default function AdminContent() {
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Content Type */}
-                <div className="space-y-2">
+                {/* <div className="space-y-2">
                   <Label htmlFor="type">Content Type</Label>
                   <Select
                     value={formData.type}
-                    onValueChange={(value: "destination" | "blog") => updateFormField("type", value)}
+                    onValueChange={(value: "destination" | "blog") =>
+                      updateFormField("type", value)
+                    }
+                    disabled={!!editingItem} // Disable select when editing
                   >
                     <SelectTrigger>
                       <SelectValue placeholder="Select content type" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="destination">Travel Destination</SelectItem>
+                      <SelectItem value="destination">
+                        Travel Destination
+                      </SelectItem>
                       <SelectItem value="blog">Blog Post</SelectItem>
                     </SelectContent>
                   </Select>
+                  {editingItem && (
+                    <p className="text-xs text-gray-400 mt-1">
+                      Content type cannot be changed while editing
+                    </p>
+                  )}
+                </div> */}
+                <div className="space-y-2">
+                  <Label htmlFor="type">Content Type</Label>
+                  <div className="relative group">
+                    <Select
+                      value={formData.type}
+                      onValueChange={(value: "destination" | "blog") =>
+                        updateFormField("type", value)
+                      }
+                      disabled={!!editingItem}
+                    >
+                      <SelectTrigger
+                        className={`${
+                          !!editingItem
+                            ? "bg-gray-100 border-gray-200 text-gray-700 cursor-not-allowed opacity-75"
+                            : ""
+                        }`}
+                      >
+                        <SelectValue placeholder="Select content type" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="destination">
+                          Travel Destination
+                        </SelectItem>
+                        <SelectItem value="blog">Blog Post</SelectItem>
+                      </SelectContent>
+                    </Select>
+
+                    {/* Hover tooltip */}
+                    {editingItem && (
+                      <div className="absolute left-0 -bottom-8 bg-gray-800 text-white text-xs px-2 py-1 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-10 whitespace-nowrap">
+                        Content type cannot be changed while editing
+                      </div>
+                    )}
+                  </div>
                 </div>
 
                 {/* Image Upload */}
@@ -467,7 +569,11 @@ export default function AdminContent() {
                           alt="Preview"
                           className="w-full h-64 object-cover rounded-lg"
                         />
-                        <Button type="button" variant="outline" onClick={removeImage}>
+                        <Button
+                          type="button"
+                          variant="outline"
+                          onClick={removeImage}
+                        >
                           Remove Image
                         </Button>
                       </div>
@@ -475,7 +581,10 @@ export default function AdminContent() {
                       <div className="text-center">
                         <Upload className="mx-auto h-12 w-12 text-gray-400" />
                         <div className="mt-4">
-                          <label htmlFor="image-upload" className="cursor-pointer">
+                          <label
+                            htmlFor="image-upload"
+                            className="cursor-pointer"
+                          >
                             <span className="mt-2 block text-sm font-medium text-gray-900">
                               Click to upload an image
                             </span>
@@ -517,7 +626,9 @@ export default function AdminContent() {
                       <Input
                         id="location"
                         value={formData.location}
-                        onChange={(e) => updateFormField("location", e.target.value)}
+                        onChange={(e) =>
+                          updateFormField("location", e.target.value)
+                        }
                         placeholder="Enter location"
                         required
                       />
@@ -527,7 +638,9 @@ export default function AdminContent() {
                       <Textarea
                         id="description"
                         value={formData.description}
-                        onChange={(e) => updateFormField("description", e.target.value)}
+                        onChange={(e) =>
+                          updateFormField("description", e.target.value)
+                        }
                         rows={4}
                         required
                       />
@@ -537,7 +650,9 @@ export default function AdminContent() {
                       <Textarea
                         id="fullDescription"
                         value={formData.fullDescription}
-                        onChange={(e) => updateFormField("fullDescription", e.target.value)}
+                        onChange={(e) =>
+                          updateFormField("fullDescription", e.target.value)
+                        }
                         placeholder="Detailed Description"
                         rows={6}
                       />
@@ -553,7 +668,9 @@ export default function AdminContent() {
                       <Input
                         id="date"
                         value={formData.date}
-                        onChange={(e) => updateFormField("date", e.target.value)}
+                        onChange={(e) =>
+                          updateFormField("date", e.target.value)
+                        }
                         placeholder="e.g., April 20, 2024"
                         required
                       />
@@ -563,7 +680,9 @@ export default function AdminContent() {
                       <Textarea
                         id="excerpt"
                         value={formData.excerpt}
-                        onChange={(e) => updateFormField("excerpt", e.target.value)}
+                        onChange={(e) =>
+                          updateFormField("excerpt", e.target.value)
+                        }
                         placeholder="Brief excerpt for the blog post..."
                         rows={3}
                         required
@@ -574,7 +693,9 @@ export default function AdminContent() {
                       <Textarea
                         id="content"
                         value={formData.content}
-                        onChange={(e) => updateFormField("content", e.target.value)}
+                        onChange={(e) =>
+                          updateFormField("content", e.target.value)
+                        }
                         placeholder="Detailed content..."
                         rows={6}
                         required

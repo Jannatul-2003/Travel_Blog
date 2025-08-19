@@ -12,12 +12,12 @@ import {
   Calendar,
   Users,
   Camera,
-  Facebook,
   Mail,
   ArrowRight,
 } from "lucide-react";
 import { PhotoLightbox } from "@/components/photo-lightbox";
 import type { TravelDestination, BlogPost } from "@/lib/content";
+import { SiFacebook } from "react-icons/si";
 
 interface HomePageClientProps {
   destinations: TravelDestination[];
@@ -36,6 +36,8 @@ export function HomePageClient({
     name: "",
     message: "",
   });
+
+
 
   const handleContactChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -86,67 +88,107 @@ export function HomePageClient({
   return (
     <div className="min-h-screen">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-white/90 backdrop-blur-sm z-50 border-b">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          {/* Logo - LEFT */}
-          <Link href="/" className="text-2xl font-bold text-emerald-600">
-            Mamun The Nomad
+    <nav className="fixed top-0 w-full bg-white/90 backdrop-blur-sm z-50 border-b">
+      <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+        {/* Logo - LEFT */}
+        <Link href="/" className="text-2xl font-bold text-emerald-600">
+          Mamun The Nomad
+        </Link>
+
+        {/* Right side nav + admin icon */}
+        <div className="flex items-center gap-6">
+          {/* Desktop Nav Links */}
+          <div className="hidden md:flex items-center gap-6">
+            <Link
+              href="#home"
+              className="text-gray-700 hover:text-emerald-600 transition-colors"
+            >
+              Home
+            </Link>
+            <Link
+              href="#journey"
+              className="text-gray-700 hover:text-emerald-600 transition-colors"
+            >
+              My Journey
+            </Link>
+            <Link
+              href="#blog"
+              className="text-gray-700 hover:text-emerald-600 transition-colors"
+            >
+              Blog
+            </Link>
+            <Link
+              href="#about"
+              className="text-gray-700 hover:text-emerald-600 transition-colors"
+            >
+              About
+            </Link>
+            <Link
+              href="#contact"
+              className="text-gray-700 hover:text-emerald-600 transition-colors"
+            >
+              Contact
+            </Link>
+          </div>
+
+          {/* Admin Icon - always visible */}
+          <Link href="/admin" className="flex items-center">
+            <User className="w-5 h-5 text-gray-700 hover:text-emerald-600 transition-colors" />
           </Link>
 
-          {/* Right side nav + admin icon */}
-          <div className="flex items-center gap-6">
-            {/* Desktop Nav Links */}
-            <div className="hidden md:flex items-center gap-6">
-              <Link
-                href="#home"
-                className="text-gray-700 hover:text-emerald-600 transition-colors"
-              >
-                Home
-              </Link>
-              <Link
-                href="#journey"
-                className="text-gray-700 hover:text-emerald-600 transition-colors"
-              >
-                My Journey
-              </Link>
-              <Link
-                href="#blog"
-                className="text-gray-700 hover:text-emerald-600 transition-colors"
-              >
-                Blog
-              </Link>
-              <Link
-                href="#about"
-                className="text-gray-700 hover:text-emerald-600 transition-colors"
-              >
-                About
-              </Link>
-              <Link
-                href="#contact"
-                className="text-gray-700 hover:text-emerald-600 transition-colors"
-              >
-                Contact
-              </Link>
-            </div>
+          {/* Mobile menu toggle */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden text-gray-700 hover:text-emerald-600 transition-colors"
+          >
+            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
+      </div>
 
-            {/* Admin Icon - always visible */}
-            <Link href="/admin" className="flex items-center">
-              <User className="w-5 h-5 text-gray-700 hover:text-emerald-600 transition-colors" />
+      {/* Mobile Menu Dropdown */}
+      {isOpen && (
+        <div className="md:hidden bg-white/95 backdrop-blur-sm border-b shadow-sm">
+          <div className="flex flex-col space-y-4 px-4 py-6">
+            <Link
+              href="#home"
+              className="text-gray-700 hover:text-emerald-600 transition-colors"
+              onClick={() => setIsOpen(false)}
+            >
+              Home
             </Link>
-
-            {/* Mobile menu toggle */}
-            <button className="md:hidden text-gray-700 hover:text-emerald-600">
-              {isOpen ? (
-                <X className="w-6 h-6" onClick={() => setIsOpen(false)} />
-              ) : (
-                <Menu className="w-6 h-6" onClick={() => setIsOpen(true)} />
-              )}
-
-              {/* Use your Menu/X icon toggle here */}
-            </button>
+            <Link
+              href="#journey"
+              className="text-gray-700 hover:text-emerald-600 transition-colors"
+              onClick={() => setIsOpen(false)}
+            >
+              My Journey
+            </Link>
+            <Link
+              href="#blog"
+              className="text-gray-700 hover:text-emerald-600 transition-colors"
+              onClick={() => setIsOpen(false)}
+            >
+              Blog
+            </Link>
+            <Link
+              href="#about"
+              className="text-gray-700 hover:text-emerald-600 transition-colors"
+              onClick={() => setIsOpen(false)}
+            >
+              About
+            </Link>
+            <Link
+              href="#contact"
+              className="text-gray-700 hover:text-emerald-600 transition-colors"
+              onClick={() => setIsOpen(false)}
+            >
+              Contact
+            </Link>
           </div>
         </div>
-      </nav>
+      )}
+    </nav>
 
       {/* Hero Section */}
       <section
@@ -432,7 +474,7 @@ export function HomePageClient({
               href="https://www.facebook.com/people/Mamun-The-Nomad/61569651252365/"
               className="text-white hover:text-emerald-600 transition-colors"
             >
-              <Facebook className="w-8 h-8" />
+              <SiFacebook className="w-8 h-8" />
             </Link>
           </div>
         </div>
@@ -463,7 +505,7 @@ export function HomePageClient({
                       href="https://www.facebook.com/people/Mamun-The-Nomad/61569651252365/"
                       className="text-emerald-600 hover:text-emerald-700"
                     >
-                      <Facebook className="w-6 h-6" />
+                      <SiFacebook className="w-6 h-6" />
                     </Link>
                     <a
                       href="https://mail.google.com/mail/?view=cm&fs=1&to=almamunurrashid1973@gmail.com&su=Hello%20from%20your%20travel%20blog%20visitor"
