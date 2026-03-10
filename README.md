@@ -128,30 +128,6 @@ pnpm dev
 
 4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-### To Reactivate Backend Features (Optional)
-
-If you want to restore the full dynamic functionality:
-
-1. **Restore Supabase Database**:
-   - Download the backup from the paused Supabase project
-   - Create a new Supabase project
-   - Restore the backup to the new project
-   - Or restore locally using the backup
-
-2. **Set up environment variables**:
-Create a `.env.local` file in the root directory:
-```env
-NEXT_PUBLIC_SUPABASE_URL=your_new_supabase_url
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_new_supabase_anon_key
-```
-
-3. **Configure Supabase**:
-   - Create tables: `travel_destinations` and `blog_posts`
-   - Set up Storage bucket for images
-   - Configure authentication
-   - Set up Row Level Security policies
-
-4. The admin panel at `/admin` will become functional again
 
 ## 📊 Database Schema
 
@@ -208,7 +184,6 @@ npm run build
 ```
 
 ### Environment Variables (Vercel)
-Currently not required for static deployment. If reactivating Supabase:
 - `NEXT_PUBLIC_SUPABASE_URL`
 - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
 
@@ -222,7 +197,7 @@ Currently not required for static deployment. If reactivating Supabase:
 5. Views static blog posts and destinations
 6. Contacts via integrated Gmail form
 
-### Original Content Management Workflow (When Backend Active)
+### Original Content Management Workflow 
 1. Admin logs in with credentials
 2. Selects content type (Destination or Blog Post)
 3. Uploads image and fills in details
@@ -230,7 +205,6 @@ Currently not required for static deployment. If reactivating Supabase:
 5. Content appears instantly on public website
 6. Can edit or delete existing content anytime
 
-**Note**: The admin panel code exists at `/admin` but requires Supabase reactivation to function.
 
 ## 🎯 Unique Selling Points
 
@@ -262,8 +236,6 @@ npm run lint     # Run ESLint
 ## 📈 Future Enhancements
 
 ### Immediate Opportunities
-- [ ] Reactivate Supabase backend for dynamic content management
-- [ ] Restore admin panel functionality
 - [ ] Enable real-time content updates
 
 ### Long-term Features
@@ -287,7 +259,7 @@ This project is private and created for personal use.
 
 ## 👨‍💻 Developer
 
-Built with ❤️ for Mamun The Nomad
+Built with love for Mamun The Nomad
 
 ## � Project History
 
@@ -305,6 +277,5 @@ Built with ❤️ for Mamun The Nomad
 ---
 
 **Live Website**: [Deployed on Vercel]
-**Admin Panel**: `/admin`
 **Contact**: almamunurrashid1973@gmail.com
 
