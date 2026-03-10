@@ -1,16 +1,15 @@
 # Mamun The Nomad - Travel Blog Platform
 
-A modern travel blog and photo gallery platform built for showcasing travel adventures across Bangladesh. Originally designed as a full-stack application with dynamic content management, currently deployed as a static website on Vercel's Hobby plan.
+A modern travel blog and photo gallery platform built for showcasing travel adventures across Bangladesh. Originally designed as a full-stack application with dynamic content management, currently deployed on Vercel's Hobby plan.
 
 ## 🌟 Project Overview
 
 This is a personal travel blog created for my uncle to document and share his travel experiences. The platform showcases stunning visual storytelling with a beautiful, responsive design. 
 
-**Current Status**: The website is live and functional as a static site with pre-loaded content. The Supabase backend (database, authentication, and storage) was paused on June 24, 2024, after 90+ days of inactivity and cannot be restored through the dashboard. However, all previously uploaded images and content remain accessible through the static deployment.
+**Current Status**: The website is live and functional, with full Supabase backend active and ready for dynamic content management.
 
 ## ✨ Key Features
 
-### Currently Active (Static Website)
 - **Responsive Homepage** with hero section and featured content
 - **Photo Gallery** with 80+ travel photos and lightbox viewer for immersive browsing
 - **Static Content Display** showcasing destinations and blog posts
@@ -19,9 +18,6 @@ This is a personal travel blog created for my uncle to document and share his tr
 - **Dark/Light Theme Support** using next-themes
 - **Social Media Integration** (Facebook)
 - **Optimized Images** served from `/public/images` directory
-
-### Originally Built Features (Currently Inactive)
-The codebase includes a fully functional admin panel and backend system that is currently inactive due to Supabase being paused:
 
 - **Secure Authentication** with Supabase Auth
 - **Content Management System** for destinations and blog posts
@@ -53,12 +49,12 @@ The codebase includes a fully functional admin panel and backend system that is 
 - **next-themes** - Theme management
 
 ### Backend & Database
-- **Supabase** - Backend as a Service (Currently Paused)
-  - PostgreSQL database (inactive)
-  - Authentication (inactive)
-  - Storage for images (inactive)
-  - Real-time capabilities (inactive)
-- **Next.js API Routes** - Serverless functions (ready for reactivation)
+- **Supabase** - Backend as a Service (Active)
+  - PostgreSQL database
+  - Authentication
+  - Storage for images
+  - Real-time capabilities
+- **Next.js API Routes** - Serverless functions 
 - **Static Images** - Currently served from `/public/images` directory
 
 ### Form & Validation
@@ -297,8 +293,7 @@ Built with ❤️ for Mamun The Nomad
 
 - **Initial Development**: Built as a full-stack application with Supabase backend
 - **June 24, 2024**: Supabase project paused due to 90+ days inactivity
-- **Current State**: Deployed as static website with 81+ pre-loaded images
-- **Data Status**: All Supabase data remains intact and can be restored
+- **March 2026**: Supabase project restored and backend is active
 
 ## �🙏 Acknowledgments
 
@@ -310,7 +305,6 @@ Built with ❤️ for Mamun The Nomad
 ---
 
 **Live Website**: [Deployed on Vercel]
-**Admin Panel**: `/admin` (requires Supabase reactivation)
+**Admin Panel**: `/admin`
 **Contact**: almamunurrashid1973@gmail.com
 
-**Note**: This project demonstrates full-stack development capabilities with Next.js, TypeScript, and Supabase, currently running in static mode. The complete backend infrastructure code is production-ready and can be reactivated by restoring the Supabase database.
